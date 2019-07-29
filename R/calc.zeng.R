@@ -49,7 +49,8 @@ calc.zeng <- function(dateTime,Ts,airT,Uz,RH,atm.press,wnd.z,airT.z,RH.z){
                     Ts = Ts,
                     airT = airT,
                     Uz = Uz,
-                    RH = RH)
+                    RH = RH
+                    atm.press = atm.press)
   
   # remove duplicated time stamps
   dat$dateTime <- as.POSIXct(strptime(dat$dateTime,"%Y-%m-%d %H:%M")) # ensure times are POSIXct
@@ -66,6 +67,7 @@ calc.zeng <- function(dateTime,Ts,airT,Uz,RH,atm.press,wnd.z,airT.z,RH.z){
   airT <- dat$airT
   Uz <- dat$Uz
   RH <- dat$RH
+  atm.press <- atm.press
   
   # if temperature and humidity height are missing, assume same as wind
   if (missing(airT.z)){airT.z <- wnd.z}
