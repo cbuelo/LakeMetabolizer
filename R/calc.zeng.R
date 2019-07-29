@@ -67,7 +67,7 @@ calc.zeng <- function(dateTime,Ts,airT,Uz,RH,atm.press,wnd.z,airT.z,RH.z){
   airT <- dat$airT
   Uz <- dat$Uz
   RH <- dat$RH
-  atm.press <- atm.press
+  atm.press <- dat$atm.press
   
   # if temperature and humidity height are missing, assume same as wind
   if (missing(airT.z)){airT.z <- wnd.z}
