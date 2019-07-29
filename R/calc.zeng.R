@@ -49,7 +49,7 @@ calc.zeng <- function(dateTime,Ts,airT,Uz,RH,atm.press,wnd.z,airT.z,RH.z){
                     Ts = Ts,
                     airT = airT,
                     Uz = Uz,
-                    RH = RH
+                    RH = RH,
                     atm.press = atm.press)
   
   # remove duplicated time stamps
