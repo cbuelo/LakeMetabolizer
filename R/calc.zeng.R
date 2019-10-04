@@ -53,7 +53,7 @@ calc.zeng <- function(dateTime,Ts,airT,Uz,RH,atm.press,wnd.z,airT.z,RH.z){
                     atm.press = atm.press)
   
   # remove duplicated time stamps
-  dat$dateTime <- as.POSIXct(strptime(dat$dateTime,"%Y-%m-%d %H:%M")) # ensure times are POSIXct
+  dat$dateTime <- as.POSIXct(strptime(dat$dateTime,"%Y-%m-%d %H:%M"), tz=attr(dateTime[1], "tzone")) # ensure times are POSIXct
   # dat <- subset(dat,!duplicated(dat$dateTime)) #remove duplicate time stamps # NOTE: don't want to remove duplicates if dealing with multiple lakes
   
   # store original dates - used for final data frame
