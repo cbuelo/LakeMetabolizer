@@ -53,13 +53,13 @@ calc.zeng <- function(dateTime,Ts,airT,Uz,RH,atm.press,wnd.z,airT.z,RH.z){
   
   # remove duplicated time stamps
   dat$dateTime <- as.POSIXct(strptime(dat$dateTime,"%Y-%m-%d %H:%M")) # ensure times are POSIXct
-  dat <- subset(dat,!duplicated(dat$dateTime)) #remove duplicate time stamps
+  # dat <- subset(dat,!duplicated(dat$dateTime)) #remove duplicate time stamps # NOTE: don't want to remove duplicates if dealing with multiple lakes
   
   # store original dates - used for final data frame
   original_dates <- data.frame(dateTime = dat$dateTime)  
   
   # remove missing data
-  dat <-  dat[complete.cases(dat),]
+  # dat <-  dat[complete.cases(dat),] # NOTE: don't deal with missing data w/in this function; just return NA if input data is missing
   
   # re-define variables
   Ts <- dat$Ts
@@ -233,7 +233,7 @@ calc.zeng <- function(dateTime,Ts,airT,Uz,RH,atm.press,wnd.z,airT.z,RH.z){
   # store results in data.frame and merge with original dateTime
   mm <- data.frame(dateTime = dat$dateTime,
                    C_D = C_D,alh = alh,ash = ash)
-  mm <- merge(mm,original_dates,all = TRUE)
+  # mm <- merge(mm,original_dates,all = TRUE) # NOTE: if not removing duplicates and incomplete data above, no need to merge with original dates
   return(mm)
   
 }
